@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="高斯混合模型（Gaussian Mixture Model）单高斯模型具有一定的局限性，混合高斯模型更高能去拟合样本的分布，混合高斯模型的定义为，对于一个d维的样本，我们假设它是由K个高斯混合而成，每个高斯都有其权重，考虑到概率的因素，这些权重之和为1. 1.基本模型根据最大似然的原理只需最大化似然函数，但是这个似然函数优化起来有些麻烦因为log函数出现了加法，这样对于求解造成了麻烦，一般情况下可">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2018/02/04/高斯混合模型/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="高斯混合模型（Gaussian Mixture Model）单高斯模型具有一定的局限性，混合高斯模型更高能去拟合样本的分布，混合高斯模型的定义为，对于一个d维的样本，我们假设它是由K个高斯混合而成，每个高斯都有其权重，考虑到概率的因素，这些权重之和为1. 1.基本模型根据最大似然的原理只需最大化似然函数，但是这个似然函数优化起来有些麻烦因为log函数出现了加法，这样对于求解造成了麻烦，一般情况下可">
+<meta property="og:updated_time" content="2017-07-22T10:21:00.325Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="高斯混合模型（Gaussian Mixture Model）单高斯模型具有一定的局限性，混合高斯模型更高能去拟合样本的分布，混合高斯模型的定义为，对于一个d维的样本，我们假设它是由K个高斯混合而成，每个高斯都有其权重，考虑到概率的因素，这些权重之和为1. 1.基本模型根据最大似然的原理只需最大化似然函数，但是这个似然函数优化起来有些麻烦因为log函数出现了加法，这样对于求解造成了麻烦，一般情况下可">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Buscar"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-高斯混合模型" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/02/04/高斯混合模型/" class="article-date">
+  <time datetime="2018-02-04T12:47:19.985Z" itemprop="datePublished">2018-02-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="高斯混合模型（Gaussian-Mixture-Model）"><a href="#高斯混合模型（Gaussian-Mixture-Model）" class="headerlink" title="高斯混合模型（Gaussian Mixture Model）"></a>高斯混合模型（Gaussian Mixture Model）</h2><p>单高斯模型具有一定的局限性，混合高斯模型更高能去拟合样本的分布，混合高斯模型的定义为，对于一个d维的样本，我们假设它是由K个高斯混合而成，每个高斯都有其权重，考虑到概率的因素，这些权重之和为1.</p>
+<h3 id="1-基本模型"><a href="#1-基本模型" class="headerlink" title="1.基本模型"></a>1.基本模型</h3><p>根据最大似然的原理只需最大化似然函数，但是这个似然函数优化起来有些麻烦因为log函数出现了加法，这样对于求解造成了麻烦，一般情况下可以采用EM算法去求解。</p>
+<h3 id="2-EM算法"><a href="#2-EM算法" class="headerlink" title="2.EM算法"></a>2.EM算法</h3><p>将问题转化为最大化lower bound, 一般是将问题转化为Lowerbound L(q, theta)和KL距离KL(q||p).我们知道KL距离是恒大于0的(根据jesen不等式）那么在E步，由于固定了参数theta，那么由于目标函数不含theta，故保持不变，要使下界最大，只需KL最小即可。当去q（z）=p（z|x，theta）使，KL最小为0；在M step， 保持q（z）不变，优化参数theta，得到新的theta，theta的改变使得KL部分恒大于0，对于Lower bound也肯定增大，因为我们就是根据lower bound来求解theta的</p>
+<h3 id="3-EM算法的评价"><a href="#3-EM算法的评价" class="headerlink" title="3.EM算法的评价"></a>3.EM算法的评价</h3><ul>
+<li>EM算法速度很慢，迭代次数多，一般的做法是利用KMeans确定好初值，再进行训练。</li>
+<li>EM算法是非凸优化，没有全局最优解<h3 id="4-LDA（理解的一般）"><a href="#4-LDA（理解的一般）" class="headerlink" title="4.LDA（理解的一般）"></a>4.LDA（理解的一般）</h3></li>
+<li>Bayesian观点认为参数不是一个固定值，而使服从某种分布，样本是固定的，我们需要做的就是推断出参数的分布，而频率观点是认为样本是随机的，而参数是固定的，但是未知的，我们要做的是求出这个值</li>
+<li>LDA基本思想是对于一篇文章被选中的概率P(di)，P(tk|di)即在文档di的条件下tk的概率，P(wl|tk）即在主题tk的条件下词语wl出现的概率。而我们要做的就是最大化分布P（W|D）。在这个当中我们又加了2个超参数，用来估计两个分布</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/02/04/高斯混合模型/" data-id="cjd8s8pdk000efot1xdck598n" class="article-share-link">Compartir</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/02/04/可视化手段/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Nuevo</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/02/04/Spark学习要点/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Viejo</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archivos</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Posts recientes</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/02/04/维度的降低/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/02/04/推荐系统_介绍/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/02/04/图算法/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/02/04/特征选择/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/02/04/数据缺失问题的处理/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 John Doe<br>
+      Construido por <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

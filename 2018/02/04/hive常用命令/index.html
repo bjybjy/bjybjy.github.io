@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Hive常用指令主要命令如下:  在Linux终端输入hive，自动进入hive命令行。若不想进入hive命令行，想要在Linux终端操作则输入：hive -e + hive语句 create database stu:创建名称为stu的数据库 show databases:显示所有的数据库 show tables:显示所有的表 drop database stu:删除数据库stu drop ta">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2018/02/04/hive常用命令/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Hive常用指令主要命令如下:  在Linux终端输入hive，自动进入hive命令行。若不想进入hive命令行，想要在Linux终端操作则输入：hive -e + hive语句 create database stu:创建名称为stu的数据库 show databases:显示所有的数据库 show tables:显示所有的表 drop database stu:删除数据库stu drop ta">
+<meta property="og:updated_time" content="2017-07-22T10:21:00.309Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="Hive常用指令主要命令如下:  在Linux终端输入hive，自动进入hive命令行。若不想进入hive命令行，想要在Linux终端操作则输入：hive -e + hive语句 create database stu:创建名称为stu的数据库 show databases:显示所有的数据库 show tables:显示所有的表 drop database stu:删除数据库stu drop ta">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Buscar"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-hive常用命令" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/02/04/hive常用命令/" class="article-date">
+  <time datetime="2018-02-04T12:47:19.973Z" itemprop="datePublished">2018-02-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Hive常用指令"><a href="#Hive常用指令" class="headerlink" title="Hive常用指令"></a>Hive常用指令</h1><p>主要命令如下:</p>
+<ul>
+<li>在Linux终端输入hive，自动进入hive命令行。若不想进入hive命令行，想要在Linux终端操作则输入：hive -e + hive语句</li>
+<li>create database stu:创建名称为stu的数据库</li>
+<li>show databases:显示所有的数据库</li>
+<li>show tables:显示所有的表</li>
+<li>drop database stu:删除数据库stu</li>
+<li>drop table stu:删除表stu</li>
+<li>create table stu（name String， age Int）<br>comment “this is a table”<br>row format delimited<br>fields terminated by ‘\t’<br>stored as textfile<br>location ‘/user/table/stu’</li>
+<li>load data local inpath ‘/user/stu.txt’ overwrite into table stu  </li>
+<li>ALTER TABLE table_name ADD COLUMNS (col_name STRING);  //在所有存在的列后面，但是在分区列之前添加一列</li>
+<li>ALTER TABLE stu RENAME TO stu1:将表的名字由stu转向stu1</li>
+<li>show partitions app.test;查看表分区</li>
+<li>select (avg)（name） from stu:对表stu中的name列取平均</li>
+<li>select info.id, info.name, ppinfo.address, ppinfo.rank from info left join ppinfo on info.id = ppinfo.id;left join是指以左边的数据表为参考，右边没有的行要补NULL,right join正好相反；单独的join只取两者都有的id，即新表中不会有NULL出现；而full join则包含了左右join的情况。</li>
+<li>alter table app.test drop if exists partition(dt=’2014-03-16’);如果存在分区2014-03-16就删除它</li>
+<li>alter table app.test add if not exists partition(dt=’2014-03-16’);如果不存在分区2014-03-16就添加它</li>
+<li>select * from info order/sort by grade desc limit 5：挑选表中成绩前5的信息</li>
+<li><h4 id="order-by-sort-by-distribute-by-cluster-by的区别"><a href="#order-by-sort-by-distribute-by-cluster-by的区别" class="headerlink" title="order by/sort by/distribute by/cluster by的区别"></a>order by/sort by/distribute by/cluster by的区别</h4>1、 order by只应用一个reducer，因此可以达到全局排序的目的。但同时大规模数据的排序会耗费较长的时间<br>2、 sort by可以应用多个reducer，只保证在reducer端进行排序。因此，耗时会比order by少，但是只保证每个reducer中数据的有序，不保证全局有序。<br>3、distribute by通常和sort by连用，非常适合在某个属性内的排序<br>select mid, money, name from store distribute by mid sort by mid asc, money asc：对mid属性内的各个行按照mid还有money排序。但distribute by必须在sort by之前<br>4、cluster by与distribute by+sort by等价但是cluster by只能是降序不能指定desc与asc<br>select mid, money, name from store cluster by mid 与select mid, money, name from store distribute by mid sort by mid  等价。<br>select mid, money, name from store cluster by mid sort by money  与select mid, money, name from store distribute by mid sort by mid asc, money等价</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/02/04/hive常用命令/" data-id="cjd8s8pc80005fot1uobbxfcy" class="article-share-link">Compartir</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/02/04/L0_L1_L2 regulation/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Nuevo</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/02/04/Gradient Boosting new/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Viejo</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archivos</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Posts recientes</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/02/04/维度的降低/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/02/04/推荐系统_介绍/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/02/04/图算法/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/02/04/特征选择/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/02/04/数据缺失问题的处理/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 John Doe<br>
+      Construido por <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="CS231n KNN1、图形分类的难点：  视角的转变 Viewpoint variation 图片大小与物体真实大小的对比 Scale variation 物体的变形 deformation 图片上仅有物体的一部分，其他部分被遮挡 Occlusion 光线的明暗 Illumination conditions 背景的干扰 Background clutter 同一类物品的变种 Intra-cla">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2018/02/04/CS231n_KNN/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="CS231n KNN1、图形分类的难点：  视角的转变 Viewpoint variation 图片大小与物体真实大小的对比 Scale variation 物体的变形 deformation 图片上仅有物体的一部分，其他部分被遮挡 Occlusion 光线的明暗 Illumination conditions 背景的干扰 Background clutter 同一类物品的变种 Intra-cla">
+<meta property="og:updated_time" content="2017-07-22T10:21:00.292Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="CS231n KNN1、图形分类的难点：  视角的转变 Viewpoint variation 图片大小与物体真实大小的对比 Scale variation 物体的变形 deformation 图片上仅有物体的一部分，其他部分被遮挡 Occlusion 光线的明暗 Illumination conditions 背景的干扰 Background clutter 同一类物品的变种 Intra-cla">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Buscar"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-CS231n_KNN" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/02/04/CS231n_KNN/" class="article-date">
+  <time datetime="2018-02-04T12:47:19.968Z" itemprop="datePublished">2018-02-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="CS231n-KNN"><a href="#CS231n-KNN" class="headerlink" title="CS231n KNN"></a>CS231n KNN</h1><p>1、图形分类的难点：</p>
+<ul>
+<li>视角的转变 Viewpoint variation</li>
+<li>图片大小与物体真实大小的对比 Scale variation</li>
+<li>物体的变形 deformation</li>
+<li>图片上仅有物体的一部分，其他部分被遮挡 Occlusion</li>
+<li>光线的明暗 Illumination conditions</li>
+<li>背景的干扰 Background clutter</li>
+<li>同一类物品的变种 Intra-class variation  </li>
+</ul>
+<p>2、关于距离定义L1与L2的区别：</p>
+<ul>
+<li>当对比两个向量的不同时，L2对距离更敏感 </li>
+</ul>
+<p>3、数据集的划分</p>
+<ul>
+<li>对于测试数据一定是只用一次的，训练数据一般划分为训练集和验证集，划分比例为 %50~%90，取决于需要调整参数的多少。当调整参数较多时，验证集一般也应多些。当验证集大约只有几百个时，用交叉验证是很安全的。当训练数据不足时，采用K重交叉验证时能减少训练模型时的噪声而且对模型的参数估计也更准确。模型确定后一般不用再把全部的训练数据放进模型，因为随着训练数据的加大，最优参数可能会改变，因此一般的做法是当参数估计完成后，刨除验证集。</li>
+<li>实际工程中，K重交叉验证用的很少，因为有很高的计算复杂度</li>
+</ul>
+<p>4、KNN的优缺点</p>
+<ul>
+<li>原理简单，实现简单，训练基本不用花费时间</li>
+<li>但是，测试时花费时间较多。但实际中，我们更在乎的是测试时间，训练时间相对不是那么重要</li>
+<li>KNN加速算法包括KDtree 和利用k-means</li>
+<li>对于低维数据，KNN是很合适，但不适合像素级别的图片分类（维度高），同时，当对同一张图片做滤镜或者灰度处理时，KNN并不能区分</li>
+<li>L1、L2距离定义对图像的背景和颜色分布很敏感</li>
+<li>需要保存训练数据，当训练数据很大时，占用过多的内存</li>
+</ul>
+<p>5、对于图片处理问题时，不用对特征进行归一化操作，因为每个像素均位于0~255，已经在一个固定的范围了</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/02/04/CS231n_KNN/" data-id="cjd8s8pbv0000fot15pota8rf" class="article-share-link">Compartir</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/02/04/Gradient Boosting new/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Nuevo</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/02/04/样本倾斜问题的处理/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Viejo</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archivos</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Posts recientes</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/02/04/维度的降低/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/02/04/推荐系统_介绍/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/02/04/图算法/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/02/04/特征选择/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/02/04/数据缺失问题的处理/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 John Doe<br>
+      Construido por <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

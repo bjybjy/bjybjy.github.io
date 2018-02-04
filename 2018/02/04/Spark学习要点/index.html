@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Spark学习要点主要命令如下:  在Linux终端输入spark-shell进入scala spark；输入pyspark自动进入pyspark from pyspark import SparkContext导入spark环境配置变量，几乎是必须的sc = SparkContext(“local[2]”, “first spark app”)调用2线程的SparkContext对象，设置程序的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2018/02/04/Spark学习要点/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Spark学习要点主要命令如下:  在Linux终端输入spark-shell进入scala spark；输入pyspark自动进入pyspark from pyspark import SparkContext导入spark环境配置变量，几乎是必须的sc = SparkContext(“local[2]”, “first spark app”)调用2线程的SparkContext对象，设置程序的">
+<meta property="og:updated_time" content="2017-07-22T10:21:00.304Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="Spark学习要点主要命令如下:  在Linux终端输入spark-shell进入scala spark；输入pyspark自动进入pyspark from pyspark import SparkContext导入spark环境配置变量，几乎是必须的sc = SparkContext(“local[2]”, “first spark app”)调用2线程的SparkContext对象，设置程序的">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Buscar"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Spark学习要点" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/02/04/Spark学习要点/" class="article-date">
+  <time datetime="2018-02-04T12:47:19.982Z" itemprop="datePublished">2018-02-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Spark学习要点"><a href="#Spark学习要点" class="headerlink" title="Spark学习要点"></a>Spark学习要点</h1><p>主要命令如下:</p>
+<ul>
+<li>在Linux终端输入spark-shell进入scala spark；输入pyspark自动进入pyspark</li>
+<li>from pyspark import SparkContext导入spark环境配置变量，几乎是必须的<br>sc = SparkContext(“local[2]”, “first spark app”)调用2线程的SparkContext对象，设置程序的名字为”first spark app”</li>
+<li>环境设置完后就可以开始进行读入数据了data = sc.textFile(filePath)这样collect后的结果是为按行划分的一个列表<br>filePath有两种：若是读取本地文件则为file:///+local absolut path;若是读取hdfs之上的文件则为hdfs://+hdfs absolut path注意默认情况下，使用的是hdfs文件系统</li>
+<li>spark-submit 123.py 提交python脚本进行执行<br>在试验的过程中出现一个错误就是java.net.BindException: Address already in use Error；也就是说spark的默认端口被占用了，这时可以使用 netstat -lnap | grep <port>；kill -9 <pid> 第1条命令是查找占用断口的进程id，第2条是强制结束拥有该id的进程。</pid></port></li>
+<li>map是1对1，flatMap可以是1对多，reduceByKey</li>
+<li>dataframe操作是很方便的，如何使数据转化为spark中的dataframe有以下几种做法：<br>（1）利用data = sc.textFile(),之后people = data.map(lambda p: Row(name=p[0], age=int(p[1])))需要获得表头，再然后df = sqlContext.createDataFrame(people，[columns_name])<br>（2）如果是json文件直接读取：df = sqlContext.read.json(‘1.json’)<br>df = sqlContext.read.load(“examples/src/main/resources/people.json”, format=”json”)默认load的格式是parquet，因此load json需要指明格式<br>df = sqlContext.read.load(“examples/src/main/resources/users.parquet”)<br>df.select(“name”, “favorite_color”).write.save(“namesAndFavColors.parquet”)<br>（3）利用hive创建的表,通过df = sqlContext.sql(‘select * from table’)<br>(4)利用pandas数据结构<br>（5）train = sqlContext.load(source=”com.databricks.spark.csv”, path = ‘PATH/train.csv’, header = True,inferSchema = True)利用数据包com.databricks:spark-csv需要在pyspark运行时加上pyspark –packages com.databricks:spark-csv_2.10:1.3.0<ul>
+<li>spark中的dataframe与pandas中的差别很大，仅支持select，count，first，groupBy，avg,filter等简单操作withColumns可以处理列之间的信息：dfdf.withColumn(‘rank’, dfdf.id).show()新增添一列名为rank的列，其数值与当前的id列完全一样。</li>
+<li>from pyspark.sql import functions as F可以调用df.agg(F.min(df.age)).collect()筛选出年龄最小的.F函数十分丰富。并且支持自定义的udf<a href="http://spark.apache.org/docs/latest/api/python/pyspark.sql.html#pyspark.sql.DataFrame" target="_blank" rel="noopener">见spark官方文档</a><h2 id="Spark-机器学习"><a href="#Spark-机器学习" class="headerlink" title="Spark 机器学习"></a>Spark 机器学习</h2></li>
+</ul>
+</li>
+<li>spark机器学习算法利用sklearn的算法包，主要位于spark.ml中from pyspark.ml.linalg import Vectors<br>pipeline = Pipeline(stages=[tokenizer, hashingTF, lr])pipeline的使用可以有效地改善代码的长度。利用Pipeline可以使简化代码长度<br>(1)提取数据<br>#加载数据<br>data = sqlContext.read.format(‘csv’)\<pre><code>.options(header=&apos;true&apos;, inferSchema=&apos;true&apos;)\
+.load(&apos;/FileStore/tables/2as1uvia1490324012711/all_origin_PD_datae4a4b.csv&apos;)
+</code></pre>data.cache()<br>(2)特征预处理<ul>
+<li>若其中包含有非数字特征利用StringIndexer</li>
+<li>若想把多类分成二进制的形式采用onehotencoder</li>
+<li>若要把特征变成向量采用VectorAssembler</li>
+<li>若想把特征归一化可以采用StandardScaler等<br>注意以上均处于pyspark.ml.feature包<br>(3)模型训练</li>
+<li>样本的划分可以采用DataFrame类的randomsplit来划分测试集和训练集</li>
+<li>从中选择模型</li>
+<li>若要利用交叉验证可以采用pyspark.ml.tuning 下的ParamGridBuilder, CrossValidator来测试<br>paramGrid = (ParamGridBuilder()<pre><code>.addGrid(lr.regParam, [0.01, 0.5, 2.0])
+.addGrid(lr.elasticNetParam, [0.0, 0.5, 0.8,1.0])
+.addGrid(lr.maxIter, [20, 50, 80,100])
+.build())  
+</code></pre>cv = CrossValidator(estimator=lr, estimatorParamMaps=paramGrid, evaluator=evaluator, numFolds=5)</li>
+<li>若要评判指标则需要在pyspark.ml.evaluation下查找metrics来确定evaluator<br>evaluator = MulticlassClassificationEvaluator(metricName=”accuracy”, labelCol=’type’)<br>evaluator.evaluate(predictions)评估模型</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/02/04/Spark学习要点/" data-id="cjd8s8pca0006fot1w47ewgt5" class="article-share-link">Compartir</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/02/04/高斯混合模型/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Nuevo</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/02/04/README/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Viejo</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archivos</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Posts recientes</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/02/04/维度的降低/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/02/04/推荐系统_介绍/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/02/04/图算法/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/02/04/特征选择/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/02/04/数据缺失问题的处理/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 John Doe<br>
+      Construido por <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

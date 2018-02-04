@@ -48,9 +48,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Buscar"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -61,33 +61,39 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-你好-hexo" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-维度的降低" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/02/04/你好-hexo/" class="article-date">
-  <time datetime="2018-02-04T12:37:13.000Z" itemprop="datePublished">2018-02-04</time>
+    <a href="/2018/02/04/维度的降低/" class="article-date">
+  <time datetime="2018-02-04T12:47:20.017Z" itemprop="datePublished">2018-02-04</time>
 </a>
     
   </div>
   <div class="article-inner">
     
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/02/04/你好-hexo/">你好,hexo</a>
-    </h1>
-  
-
-      </header>
-    
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h2 id="维度的降低"><a href="#维度的降低" class="headerlink" title="维度的降低"></a>维度的降低</h2><h3 id="1-PCA的理解"><a href="#1-PCA的理解" class="headerlink" title="1.PCA的理解"></a>1.PCA的理解</h3><p>提起维度的降低，应用最多的便是PCA。对PCA的解释有两种：1种是最大化投影后数据的方差，因为方差最大的时候，数据的信息丢失的最少。第2种是最小化投影误差。2种方法最终都归结到求解到协方差矩阵的特征向量。</p>
+<p>PCA的一般处理流程：</p>
+<ul>
+<li>1.将A的每一列按均值做归一化，使归一化后的A的每一列均值为0；</li>
+<li>2.求出A的协方差矩阵的特征值以及特征矩阵V。</li>
+<li>3.B = AV</li>
+</ul>
+<p>PCA的一个优势是可以对变换后的样本数据进行重构只要保留特征矩阵就可以了。</p>
+<h3 id="2-K值的选择"><a href="#2-K值的选择" class="headerlink" title="2. K值的选择"></a>2. K值的选择</h3><p>一种确定K值的方法是K个特征值与原来D个特征值之和&gt;=0.99或者0.95</p>
+<h3 id="3-对PCA的评价"><a href="#3-对PCA的评价" class="headerlink" title="3.对PCA的评价"></a>3.对PCA的评价</h3><ul>
+<li>虽然能够降低维度，但是PCA不适合用来阻止过拟合，因为PCA没有考虑标签数据，只是考虑了样本数据的。</li>
+<li>一般求解方法使用SVD，速度更快。而且SVD没有计算协方差矩阵，对于某些矩阵，求协方差时很可能会丢失一些精度。</li>
+<li>一般情况下复杂度为O(D^3),但有一些学者的方法能达到O(MD^2)<h3 id="4-Kernel-PCA"><a href="#4-Kernel-PCA" class="headerlink" title="4.Kernel PCA"></a>4.Kernel PCA</h3>传统的PCA只是利用线性的特征组合，如果想找到非线性的特征组合的话就要考虑Kenel PCA，它可以利用一些非线性核的性质。关于kernel PCA可参看<a href="http://blog.csdn.net/wsj998689aa/article/details/40398777" target="_blank" rel="noopener">kernel PCA</a>。<h3 id="5-对kernel-PCA的评价"><a href="#5-对kernel-PCA的评价" class="headerlink" title="5.对kernel PCA的评价"></a>5.对kernel PCA的评价</h3></li>
+<li>Kernel PCA需要计算的矩阵的特征是NxN阶的，而线性PCA为DxD阶，对于高维数据，kernel trick依然可以使维度降至N</li>
+<li>Kernel PCA能够提取出非线性的特征，具有更大的灵活性</li>
+</ul>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/02/04/你好-hexo/" data-id="cjd8ry2ur0001rct1hshsf29a" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/02/04/维度的降低/" data-id="cjd8s8pci000cfot1c96tt5ds" class="article-share-link">Compartir</a>
       
       
     </footer>
@@ -97,42 +103,407 @@
 
 
   
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-推荐系统_介绍" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/02/04/hello-world/" class="article-date">
-  <time datetime="2018-02-04T12:21:29.390Z" itemprop="datePublished">2018-02-04</time>
+    <a href="/2018/02/04/推荐系统_介绍/" class="article-date">
+  <time datetime="2018-02-04T12:47:20.015Z" itemprop="datePublished">2018-02-04</time>
 </a>
     
   </div>
   <div class="article-inner">
     
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/02/04/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <h1 id="推荐系统：Introduction"><a href="#推荐系统：Introduction" class="headerlink" title="推荐系统：Introduction"></a>推荐系统：Introduction</h1><p>1、CF算法的优缺点：</p>
+<ul>
+<li>不用处理物品的特性信息（以书为例，比如说书的种类、作者等）、信息不用进入推荐系统进而对其进行维护</li>
+</ul>
+<p>2、Content based：</p>
+<ul>
+<li>基本思路：抽取物品信息特征和用户行为模式和反馈来构建特征</li>
+<li>不需要大量的用户历史记录</li>
+<li>没有冷启动问题</li>
+<li>对物品的一些主观性的评定（好用，设计得很好等）很难自动获取。因此，将这些评定放进系统是一个很费时而且容易出错的过程</li>
+</ul>
+<p>3、基于知识的推荐：</p>
+<ul>
+<li>对于有很多 one-time buyer的商品领域（比如电子产品），CF和Content based方法不适用，对于CF来说，用户相似性矩阵的构建是一个问题，而对于Content-based来说，用户的行为模式和反馈几乎没有</li>
+<li>可以加入认为构建专业的特征，比如相机的分辨率、价格</li>
+<li>Constraint-based recommenders是基于知识推荐里常见的例子，以相机为例，其基本思路是提供分辨率、重量，价格等过滤信息，列出符合条件的物品。但这种方法有一个缺点是：用户的个性化丢失了，因为对于不同的用户，推荐列表可能完全一样。一个解决办法是可以询问用户分辨率和重量你更看中哪一个？</li>
+<li>基于知识推荐的另一个思路是可以考虑和用户进行互动。以CF为例，和用户的交互可能只是让用户对某个物品评分，或者对摸个物品做出喜欢或者不喜欢。对于基于知识的推荐可以考虑询问用户所要商品的最大价格、重量等，但这种方法有一个缺点是对询问特征的选择有要求，需要有相关人员的理解。同时，对于物品的特征维度很大的情况，这种询问的过程可能会很繁琐。一种改善的方法是设计对话系统，从用户的回应中来推断用户的需求和喜好。</li>
+</ul>
+<p>4、混合推荐方法</p>
+<ul>
+<li>融合CF方法和基于内容推荐的方法解决冷启动问题</li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/02/04/hello-world/" data-id="cjd8ry2uk0000rct1gs02ma0r" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/02/04/推荐系统_介绍/" data-id="cjd8s8pce0009fot1jc8ak0ox" class="article-share-link">Compartir</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-图算法" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/02/04/图算法/" class="article-date">
+  <time datetime="2018-02-04T12:47:20.013Z" itemprop="datePublished">2018-02-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="最小生成树MST"><a href="#最小生成树MST" class="headerlink" title="最小生成树MST"></a>最小生成树MST</h1><p>问题的定义是给定一幅无向权重图，寻找出其生成树中权重最小的那一棵</p>
+<h2 id="原始做法"><a href="#原始做法" class="headerlink" title="原始做法"></a>原始做法</h2><p>根据切分定理，在每一次切分中切分边的权重最小的那条边一定位于最小生成树中，只要一直切分找到V-1条有效的切分边即可</p>
+<h2 id="Kruskal算法"><a href="#Kruskal算法" class="headerlink" title="Kruskal算法"></a>Kruskal算法</h2><p>Kruskal是一种贪心算法，一种思路是每次都查找最小权重的那条边，但是有一个条件，新加入的边不能与已经查找到生成树中的边构成环（即需要满足生成树的要求）</p>
+<h2 id="Prim算法"><a href="#Prim算法" class="headerlink" title="Prim算法"></a>Prim算法</h2><p>Prim算法亦是一种贪心算法，他是要求新加入树种的节点到生成树的距离最小，一般的思路是维持一个优先队列，每次去visit一个节点，如果节点没有访问过，同时如果原先到生成树的距离大于该点的权重，那么就插入优先队列</p>
+<h1 id="SP-最短路径）"><a href="#SP-最短路径）" class="headerlink" title="SP(最短路径）"></a>SP(最短路径）</h1><p>单源最短路径问题：给定一个有向图，求从一个起点到终点的最短路径<br>如果不考虑权重，最短路径的问题可以用BFS解决。但如果包含权重分为3种情况：（1）非负权重的Djiksla算法其复杂度为O（ElogV）（2）DAG（有向无环图）topilogical sort复杂度O（V+E）（3）除了含有负权重的环，BellMan-Ford含有非负权重的环</p>
+<h2 id="Dijkstra-SP"><a href="#Dijkstra-SP" class="headerlink" title="Dijkstra SP"></a>Dijkstra SP</h2><p>与Prim算法类似，其区别是Prim算法寻找的是离树最近的顶点，而Dijkstra算法寻找的是离起点最近的点，除此之外两者几乎一直</p>
+<h2 id="Topological-SP"><a href="#Topological-SP" class="headerlink" title="Topological SP"></a>Topological SP</h2><p>其基本思路是利用Topoloical排序的顺序去relax节点</p>
+<h2 id="Bellman-Ford-SP"><a href="#Bellman-Ford-SP" class="headerlink" title="Bellman-Ford SP"></a>Bellman-Ford SP</h2><p>Naiive method：relax 每一条边，重复V轮EV<br> If distTo[v] does not change during pass i, no need to relax any edge pointing from v in pass i+1.<br>因此可以维护一个队列，里边放进去在该轮中，distTo的值改变的那个顶点</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/02/04/图算法/" data-id="cjd8s8pcb0007fot12eycb3p6" class="article-share-link">Compartir</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-特征选择" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/02/04/特征选择/" class="article-date">
+  <time datetime="2018-02-04T12:47:20.011Z" itemprop="datePublished">2018-02-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="特征的选择"><a href="#特征的选择" class="headerlink" title="特征的选择"></a>特征的选择</h2><p>根据特征选择的形式又可以将特征选择方法分为3种：</p>
+<ul>
+<li>Filter：过滤法，按照发散性或者相关性对各个特征进行评分，设定阈值或者待选择阈值的个数，选择特征。</li>
+<li>Wrapper：包装法，根据目标函数（通常是预测效果评分），每次选择若干特征，或者排除若干特征。</li>
+<li>Embedded：嵌入法，先使用某些机器学习的算法和模型进行训练，得到各个特征的权值系数，根据系数从大到小选择特征。类似于Filter方法，但是是通过训练来确定特征的优劣。摘自<a href="https://www.zhihu.com/question/28641663/answer/110165221" target="_blank" rel="noopener">知乎</a></li>
+</ul>
+<h3 id="1-Filter-过滤法）"><a href="#1-Filter-过滤法）" class="headerlink" title="1.Filter(过滤法）"></a>1.Filter(过滤法）</h3><ul>
+<li>方差选择法：计算一列特征的方差，当方差大于阈值时，选用该特征。</li>
+<li>相关系数法：计算每一个特征与标签数据的相关系数选择K大的</li>
+<li>互信息法：通过信息学的Mutul-Info来选择特征与标签相关性最大的</li>
+</ul>
+<h3 id="2-Wapper-封装法）"><a href="#2-Wapper-封装法）" class="headerlink" title="2.Wapper(封装法）"></a>2.Wapper(封装法）</h3><p>比较长用的是Recursive Feature elimination</p>
+<ul>
+<li>通过递归消除特征法使用一个基模型来进行多轮训练，每轮训练后，消除若干权值系数的特征，再基于新的特征集进行下一轮训练。</li>
+<li>同样可以反过来进行操作，刚开始特征集合为空，每一轮训练增加一个特征。</li>
+</ul>
+<h3 id="3-Embedded（嵌入法）"><a href="#3-Embedded（嵌入法）" class="headerlink" title="3.Embedded（嵌入法）"></a>3.Embedded（嵌入法）</h3><ul>
+<li>Lasso：lasso能够产生稀疏解，因此对特征选择具有重要意义。但对于两个近似共线的特征lasso往往任意选择一个，但近似共线的特征重要性可能不同。因此，lasso算法并不如ridge方法稳定。相应的解决办法是可以考虑elastic net，即把lasso与ridge结合。</li>
+<li>Random Forest：在随机森林中某个特征X的重要性的计算方法如下：<br>（1）对于随机森林中的每一颗决策树,使用相应的OOB(袋外数据)数据来计算它的袋外数据误差,记为errOOB1.<br>（2）随机地对袋外数据OOB所有样本的特征X加入噪声干扰(就可以随机的改变样本在特征X处的值),再次计算它的袋外数据误差,记为errOOB2.<br>（3）假设随机森林中有Ntree棵树,那么对于特征X的重要性=∑(errOOB2-errOOB1)/Ntree,之所以可以用这个表达式来作为相应特征的重要性的度量值是因为：若给某个特征随机加入噪声之后,袋外的准确率大幅度降低,则说明这个特征对于样本的分类结果影响很大,也就是说它的重要程度比较高。</li>
+</ul>
+<p>知道特征的重要性之后，就可以用来做特征选择随机森林OOB特征选择：<br>(1) 首先建立m棵决策树，然后分别计算每棵树的OOB袋外误差errOOBj。<br>(2) 计算特征xi的重要性。随机的修改OOB中的每个特征xi的值，再次计算它的袋外误差errOOBi；xi的重要性=(∑errOOBi−errOOBj)/Ntree<br>(3) 按照特征的重要性排序，然后剔除后面不重要的特征；<br>(4) 然后重复以上步骤，直到选出m个特征。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/02/04/特征选择/" data-id="cjd8s8pcw000dfot1o719a4kf" class="article-share-link">Compartir</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-数据缺失问题的处理" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/02/04/数据缺失问题的处理/" class="article-date">
+  <time datetime="2018-02-04T12:47:19.990Z" itemprop="datePublished">2018-02-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="数据缺失问题的处理"><a href="#数据缺失问题的处理" class="headerlink" title="数据缺失问题的处理"></a>数据缺失问题的处理</h2><p>数据缺失问题是机器学习中经常碰到的问题，主要的类别有：</p>
+<ul>
+<li>完全随机缺失（missing completely at random,MCAR）：指的是数据的缺失是完全随机的，不依赖于任何不完全变量或完全变量，不影响样本的无偏性。如家庭地址缺失。</li>
+<li>随机缺失(missing at random,MAR)：指的是数据的缺失不是完全随机的，即该类数据的缺失依赖于其他完全变量。例如财务数据缺失情况与企业的大小有关。</li>
+<li>非随机缺失(missing not at random,MNAR)：指的是数据的缺失与不完全变量自身的取值有关。如高收入人群的不原意提供家庭收入。</li>
+</ul>
+<p>对于随机缺失和非随机缺失,删除记录是不合适的,随机缺失可以通过已知变量对缺失值进行估计；而非随机缺失还没有很好的解决办法。<br>解决上述问题的方法主要有三大类：删除元祖、数据补齐、不处理。</p>
+<h3 id="1-删除元祖"><a href="#1-删除元祖" class="headerlink" title="1.删除元祖"></a>1.删除元祖</h3><p>简单来说，也就是将存在遗漏信息属性值的对象（元组，记录）删除，从而得到一个完备的信息表。这种方法简单易行，在对象有多个属性缺失值、被删除的含缺失值的对象与初始数据集的数据量相比非常小的情况下非常有效，类标号缺失时通常使用该方法。<br>然而，这种方法却有很大的局限性。它以减少历史数据来换取信息的完备，会丢弃大量隐藏在这些对象中的信息。在初始数据集包含的对象很少的情况下，删除少量对象足以严重影响信息的客观性和结果的正确性；因此，当缺失数据所占比例较大，特别当遗漏数据非随机分布时，这种方法可能导致数据发生偏离，从而引出错误的结论。</p>
+<h3 id="2-数据补齐"><a href="#2-数据补齐" class="headerlink" title="2. 数据补齐"></a>2. 数据补齐</h3><ul>
+<li>可以使用一些统计量，比如数据的平均值，中位数等</li>
+<li>可以根据个人对业务的理解人为的去填充，这种方法造成的偏差是最小的。但不适用于数据规模比较大的情况。</li>
+<li>新增一列特征，是否为缺失值，该种方法能够完整的保证数据的完整性，但同时会增加样本数据的维度。而且对于数据量不大的情况下，效果往往不好。</li>
+<li>就近补齐，考虑采用就近的数据进行补齐。这个方法的缺点在于难以定义相似标准，主观因素较多。</li>
+<li>K最近距离邻法（K-means clustering）先根据欧式距离或相关分析来确定距离具有缺失数据样本最近的K个样本，将这K个值加权平均来估计该样本的缺失数据。</li>
+<li>线性插值回归（Regression）基于完整的数据集，建立回归方程。对于包含空值的对象，将已知属性值代入方程来估计未知属性值，以此估计值来进行填充。当变量不是线性相关时会导致有偏差的估计。</li>
+<li>期望值最大化方法（Expectation maximization，EM）EM算法是一种在不完全数据情况下计算极大似然估计或者后验分布的迭代算法。在每一迭代循环过程中交替执行两个步骤：E步（Excepctaion step,期望步），在给定完全数据和前一次迭代所得到的参数估计的情况下计算完全数据对应的对数似然函数的条件期望；M步（Maximzation step，极大化步），用极大化对数似然函数以确定参数的值，并用于下步的迭代。算法在E步和M步之间不断迭代直至收敛，即两次迭代之间的参数变化小于一个预先给定的阈值时结束。该方法可能会陷入局部极值，收敛速度也不是很快，并且计算很复杂。</li>
+<li>通过寻找属性间的关系来对遗失值填充。它寻找之间具有最大相关性的两个属性，其中没有遗失值的一个称为代理属性，另一个称为原始属性，用代理属性决定原始属性中的遗失值。这种基于规则归纳的方法只能处理基数较小的名词型属性。</li>
+</ul>
+<p>在对不完备信息进行补齐处理的同时，我们或多或少地改变了原始的信息系统。而且，对空值不正确的填充往往将新的噪声引入数据中，使挖掘任务产生错误的结果。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/02/04/数据缺失问题的处理/" data-id="cjd8s8pcd0008fot18vmskg19" class="article-share-link">Compartir</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-可视化手段" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/02/04/可视化手段/" class="article-date">
+  <time datetime="2018-02-04T12:47:19.988Z" itemprop="datePublished">2018-02-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="可视化手段"><a href="#可视化手段" class="headerlink" title="可视化手段"></a>可视化手段</h1><p>python语言的可视化seaborn、pandas、matplotlib三大,相关的问题主要包括（在ipython notebook下）：</p>
+<ul>
+<li>matplotlib.interactive(True)能够连续绘制弹出图片</li>
+<li>将图片嵌入ipython notebook:%pylab/matplotlib -inline</li>
+<li>plt.rcParams[‘font.sans-serif’]=[‘simsun’] #将图片中所有字体改为宋体，用来正常显示中文标签simsun</li>
+<li>plt.rcParams[‘axes.unicode_minus’]=False #用来正常显示负号</li>
+<li>from matplotlib.font_manager import FontProperties<br>font = FontProperties(fname=r”C:\WINDOWS\Fonts\simsun.ttc”, size=13)#C:\WINDOWS\Fonts<br>plt.xlabel(x_lable, fontproperties=font)将x轴标签字体设为font  </li>
+<li>plt.legend(prop=font)将图例字体设置为font  </li>
+<li>ax=fig.add_subplot(111)<br>ax.set_xlim(0,360)<br>ax.set_xticks(ticks)设置刻度标签  </li>
+<li>plt.yticks(fontsize=13)设置刻度标签字体大小  </li>
+<li>matplotlib.style.use 选择配色模板（模板名称可以从plt.style.available）</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/02/04/可视化手段/" data-id="cjd8s8pcg000afot1phf5cbt1" class="article-share-link">Compartir</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-高斯混合模型" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/02/04/高斯混合模型/" class="article-date">
+  <time datetime="2018-02-04T12:47:19.985Z" itemprop="datePublished">2018-02-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="高斯混合模型（Gaussian-Mixture-Model）"><a href="#高斯混合模型（Gaussian-Mixture-Model）" class="headerlink" title="高斯混合模型（Gaussian Mixture Model）"></a>高斯混合模型（Gaussian Mixture Model）</h2><p>单高斯模型具有一定的局限性，混合高斯模型更高能去拟合样本的分布，混合高斯模型的定义为，对于一个d维的样本，我们假设它是由K个高斯混合而成，每个高斯都有其权重，考虑到概率的因素，这些权重之和为1.</p>
+<h3 id="1-基本模型"><a href="#1-基本模型" class="headerlink" title="1.基本模型"></a>1.基本模型</h3><p>根据最大似然的原理只需最大化似然函数，但是这个似然函数优化起来有些麻烦因为log函数出现了加法，这样对于求解造成了麻烦，一般情况下可以采用EM算法去求解。</p>
+<h3 id="2-EM算法"><a href="#2-EM算法" class="headerlink" title="2.EM算法"></a>2.EM算法</h3><p>将问题转化为最大化lower bound, 一般是将问题转化为Lowerbound L(q, theta)和KL距离KL(q||p).我们知道KL距离是恒大于0的(根据jesen不等式）那么在E步，由于固定了参数theta，那么由于目标函数不含theta，故保持不变，要使下界最大，只需KL最小即可。当去q（z）=p（z|x，theta）使，KL最小为0；在M step， 保持q（z）不变，优化参数theta，得到新的theta，theta的改变使得KL部分恒大于0，对于Lower bound也肯定增大，因为我们就是根据lower bound来求解theta的</p>
+<h3 id="3-EM算法的评价"><a href="#3-EM算法的评价" class="headerlink" title="3.EM算法的评价"></a>3.EM算法的评价</h3><ul>
+<li>EM算法速度很慢，迭代次数多，一般的做法是利用KMeans确定好初值，再进行训练。</li>
+<li>EM算法是非凸优化，没有全局最优解<h3 id="4-LDA（理解的一般）"><a href="#4-LDA（理解的一般）" class="headerlink" title="4.LDA（理解的一般）"></a>4.LDA（理解的一般）</h3></li>
+<li>Bayesian观点认为参数不是一个固定值，而使服从某种分布，样本是固定的，我们需要做的就是推断出参数的分布，而频率观点是认为样本是随机的，而参数是固定的，但是未知的，我们要做的是求出这个值</li>
+<li>LDA基本思想是对于一篇文章被选中的概率P(di)，P(tk|di)即在文档di的条件下tk的概率，P(wl|tk）即在主题tk的条件下词语wl出现的概率。而我们要做的就是最大化分布P（W|D）。在这个当中我们又加了2个超参数，用来估计两个分布</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/02/04/高斯混合模型/" data-id="cjd8s8pdk000efot1xdck598n" class="article-share-link">Compartir</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Spark学习要点" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/02/04/Spark学习要点/" class="article-date">
+  <time datetime="2018-02-04T12:47:19.982Z" itemprop="datePublished">2018-02-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Spark学习要点"><a href="#Spark学习要点" class="headerlink" title="Spark学习要点"></a>Spark学习要点</h1><p>主要命令如下:</p>
+<ul>
+<li>在Linux终端输入spark-shell进入scala spark；输入pyspark自动进入pyspark</li>
+<li>from pyspark import SparkContext导入spark环境配置变量，几乎是必须的<br>sc = SparkContext(“local[2]”, “first spark app”)调用2线程的SparkContext对象，设置程序的名字为”first spark app”</li>
+<li>环境设置完后就可以开始进行读入数据了data = sc.textFile(filePath)这样collect后的结果是为按行划分的一个列表<br>filePath有两种：若是读取本地文件则为file:///+local absolut path;若是读取hdfs之上的文件则为hdfs://+hdfs absolut path注意默认情况下，使用的是hdfs文件系统</li>
+<li>spark-submit 123.py 提交python脚本进行执行<br>在试验的过程中出现一个错误就是java.net.BindException: Address already in use Error；也就是说spark的默认端口被占用了，这时可以使用 netstat -lnap | grep <port>；kill -9 <pid> 第1条命令是查找占用断口的进程id，第2条是强制结束拥有该id的进程。</pid></port></li>
+<li>map是1对1，flatMap可以是1对多，reduceByKey</li>
+<li>dataframe操作是很方便的，如何使数据转化为spark中的dataframe有以下几种做法：<br>（1）利用data = sc.textFile(),之后people = data.map(lambda p: Row(name=p[0], age=int(p[1])))需要获得表头，再然后df = sqlContext.createDataFrame(people，[columns_name])<br>（2）如果是json文件直接读取：df = sqlContext.read.json(‘1.json’)<br>df = sqlContext.read.load(“examples/src/main/resources/people.json”, format=”json”)默认load的格式是parquet，因此load json需要指明格式<br>df = sqlContext.read.load(“examples/src/main/resources/users.parquet”)<br>df.select(“name”, “favorite_color”).write.save(“namesAndFavColors.parquet”)<br>（3）利用hive创建的表,通过df = sqlContext.sql(‘select * from table’)<br>(4)利用pandas数据结构<br>（5）train = sqlContext.load(source=”com.databricks.spark.csv”, path = ‘PATH/train.csv’, header = True,inferSchema = True)利用数据包com.databricks:spark-csv需要在pyspark运行时加上pyspark –packages com.databricks:spark-csv_2.10:1.3.0<ul>
+<li>spark中的dataframe与pandas中的差别很大，仅支持select，count，first，groupBy，avg,filter等简单操作withColumns可以处理列之间的信息：dfdf.withColumn(‘rank’, dfdf.id).show()新增添一列名为rank的列，其数值与当前的id列完全一样。</li>
+<li>from pyspark.sql import functions as F可以调用df.agg(F.min(df.age)).collect()筛选出年龄最小的.F函数十分丰富。并且支持自定义的udf<a href="http://spark.apache.org/docs/latest/api/python/pyspark.sql.html#pyspark.sql.DataFrame" target="_blank" rel="noopener">见spark官方文档</a><h2 id="Spark-机器学习"><a href="#Spark-机器学习" class="headerlink" title="Spark 机器学习"></a>Spark 机器学习</h2></li>
+</ul>
+</li>
+<li>spark机器学习算法利用sklearn的算法包，主要位于spark.ml中from pyspark.ml.linalg import Vectors<br>pipeline = Pipeline(stages=[tokenizer, hashingTF, lr])pipeline的使用可以有效地改善代码的长度。利用Pipeline可以使简化代码长度<br>(1)提取数据<br>#加载数据<br>data = sqlContext.read.format(‘csv’)\<pre><code>.options(header=&apos;true&apos;, inferSchema=&apos;true&apos;)\
+.load(&apos;/FileStore/tables/2as1uvia1490324012711/all_origin_PD_datae4a4b.csv&apos;)
+</code></pre>data.cache()<br>(2)特征预处理<ul>
+<li>若其中包含有非数字特征利用StringIndexer</li>
+<li>若想把多类分成二进制的形式采用onehotencoder</li>
+<li>若要把特征变成向量采用VectorAssembler</li>
+<li>若想把特征归一化可以采用StandardScaler等<br>注意以上均处于pyspark.ml.feature包<br>(3)模型训练</li>
+<li>样本的划分可以采用DataFrame类的randomsplit来划分测试集和训练集</li>
+<li>从中选择模型</li>
+<li>若要利用交叉验证可以采用pyspark.ml.tuning 下的ParamGridBuilder, CrossValidator来测试<br>paramGrid = (ParamGridBuilder()<pre><code>.addGrid(lr.regParam, [0.01, 0.5, 2.0])
+.addGrid(lr.elasticNetParam, [0.0, 0.5, 0.8,1.0])
+.addGrid(lr.maxIter, [20, 50, 80,100])
+.build())  
+</code></pre>cv = CrossValidator(estimator=lr, estimatorParamMaps=paramGrid, evaluator=evaluator, numFolds=5)</li>
+<li>若要评判指标则需要在pyspark.ml.evaluation下查找metrics来确定evaluator<br>evaluator = MulticlassClassificationEvaluator(metricName=”accuracy”, labelCol=’type’)<br>evaluator.evaluate(predictions)评估模型</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/02/04/Spark学习要点/" data-id="cjd8s8pca0006fot1w47ewgt5" class="article-share-link">Compartir</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-README" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/02/04/README/" class="article-date">
+  <time datetime="2018-02-04T12:47:19.980Z" itemprop="datePublished">2018-02-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id=""><a href="#" class="headerlink" title="-"></a>-</h1><p>对于学习过程中的一些个人理解</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/02/04/README/" data-id="cjd8s8pc70004fot1p8ntaemx" class="article-share-link">Compartir</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Linux常用命令" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/02/04/Linux常用命令/" class="article-date">
+  <time datetime="2018-02-04T12:47:19.978Z" itemprop="datePublished">2018-02-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Linux常用命令"><a href="#Linux常用命令" class="headerlink" title="Linux常用命令"></a>Linux常用命令</h1><p>主要命令如下:</p>
+<ul>
+<li>ls/ls -r:list directory content列出当前所有文件和文件夹的名称，加上-r之后是文件和文件夹的详细信息</li>
+<li>dir [文件夹名称]:是dos下的命令，与ls命令类似</li>
+<li>chmod：用于改变指定文件的权限命令<br>Linux文件的三种身份和四种权限，三种身份分别为：（1）u：文件的拥有者（2）g：文件所属的群组（3）o：其他用户<br>对于每个身份，又有四种权限，分别为：<br>(1)r：读取文件的权限（read）  常用数字4表示<br>(2)w：写入文件的权限（write） 常用数字2表示<br>(3)x：执行的权限（execute）   常用数字1表示<br>(4)s：特殊权限<br>举例：<br>chmod 751 test.txt    对文件的拥有者执行4+2+1的权限，对文件所属的群组执行4+1的权限，对其他用户执行1权限<br>chmod u=rwx,g+rx,o-x test.sh   +和-相当于增加和删除一些权限<br>chmod a+x test.sh     a相当于所有的3种用户u、g、o，即对所有的三种用户赋予执行的权限<br>drwxr-xr-x 一共有10个字符，第一个字符指是不是普通文件，第2~4代表文件拥有者，第5~7代表文件所属的群组，第8~10代表其他用户<ul>
+<li>Chown：用来更改某个目录或文件的用户名和用户组<br>chown HEHE hh.c ：修改文件hh.c为HEHE用户所有<br>chown -R HEHE:net /tmp/sco：将目录 /tmp/sco 这个目录的所有者和组分别改为HEHE和组net </li>
+<li>mkdir：-m 用来设置权限模式，默认是0777，可用chmod更改；-p 用来创建多级目录；-v 显示创建新目录时的信息</li>
+<li>Rmdir：用于删除空的目录  -v选项：提示；-p选项：级联删除<br>rmdir dir1 dir2:删除dir1和dir2两个空目录<br>rmdir -p -v 1122/1:假设1122/1和1122/2两个目录，先删除1122/1,再删除1122出错，因为1122不为空</li>
+<li>rm：删除文件或者目录  -f选项：不管目录下的文件存在不存在，都不给予提示；-r：删除此目录下的所有文件，但是此目录不删除；-rf组合删除:删除该目录以及该目录下的所有文件； -i：删除文件或文件夹前须要确认</li>
+<li>touch：创建一个新的文件 -a：改变访问时间；-m：改变改动时间；-t timestamp：改变访问时间和改动时间为timestamp</li>
+<li>Vi:创建一个新的文件，进入vi后，点击字母i进行编辑模式，若输入错误必须先按Esc退出该模式，进入命令行模式，按字符x进行删除。保存时需要在命令行模式下进行：（：w filename退出以filename名称保存；：wq保存修改并退出vi； ：q! 不保存强制退出）</li>
+<li>mv：移动文件到新的位置  -b ：若需覆盖文件，则覆盖前先行备份；-f ：force 强制的意思，如果目标文件已经存在，不会询问而直接覆盖；-i ：若目标文件 (destination) 已经存在时，就会询问是否覆盖；-u ：若目标文件已经存在，且 source 比较新，才会更新(update)；-t：即指定mv的目标目录，该选项适用于移动多个源文件到一个目录的情况，此时目标目录在前，源文件在后。</li>
+<li>cp：复制文件/文件夹到新的位置 （默认情况下，cp命令不能复制目录，如果要复制目录，则必须使用-R选项；当“源文件”为多个文件时，要求“目标文件”为指定的目录。<br>cp file /usr/men/tmp/file1：复制文件file到file1<br>cp -r /usr/men /usr/zh:将目录/usr/men下的所有文件及其子目录复制到目录/usr/zh中<br>cp -i /usr/men m*.c /usr/zh:交互式地将目录/usr/men中的以m打头的所有.c文件复制到目录/usr/zh中</li>
+<li>cat、more、less的区别：cat显示全部的文件内容。more和less都可以显示一部分内容进行滚动浏览，但区别是less可以利用pageup和pagedown键进行前后浏览，而more只能通过空格键往后浏览。后两者按q键可以退出<br>cat -n: 显示行号 cat -b: 显示行号且忽略空行</li>
+<li>head/tail:可以显示文件前n行和后n行的数据<br>例：head -n filename：显示前n行的文件内容</li>
+<li>find 指定的文件：查找相关文件</li>
+<li>Whereis：查找指定的文件源和二进制文件和手册等（例whereis java:查找java的安装地址)</li>
+<li>which:用于查询命令或别名的位置。</li>
+<li>Grep：查找文件里符合条件的字符串。Grep “sj” filename在文件filename中查找是否有字符“sj”</li>
+<li>Tar：用于多个文件或目录进行打包，但不压缩，同时也用命令进行解包<br>tar -c 创建新文档 -x 解包 -v 显示正在处理的文件名 -f 取代默认的文件名<br>tar -cvf project.tar project/* 把project目录下所有文件打包成文件project.jar</li>
+<li>Su：切换用户命令  </li>
+<li>Sudo：一系统管理员的身份执行命令  </li>
+<li>Passwd：用于修改用户的密码</li>
+<li>pwd：显示当前用户所在工作目录位置</li>
+<li>Who：显示系统中有那些用户在使用。</li>
+<li>man：帮助命令，man ls</li>
+<li>Free：查看当前系统的内存使用情况</li>
+<li>Uptime：显示系统运行了多长时间</li>
+<li>Ps：显示瞬间进程的动态</li>
+<li>Top: 动态地显示进程</li>
+<li>Date：显示或设定系统的日期与时间。</li>
+<li>Last：显示每月登陆系统的用户信息</li>
+<li>Kill： 杀死一些特定的进程</li>
+<li>Logout：退出系统</li>
+<li>Useradd/userdel:添加用户/删除用户</li>
+<li>Clear：清屏</li>
+<li>Passwd：设置用户密码</li>
+<li>Arp：网络地址显示及控制</li>
+<li>Netstat：显示网络连接.路由表和网络接口信息</li>
+<li>wc: 计数 -l: 行数；-w: 字数；-c: 字符数；<br>wc -l file1 file2 ……可以统计多个文件</li>
+<li>file 察看文件类型</li>
+<li>fg：把后台进程放到前台。fg %1 把后台第一个作业放到前台</li>
+<li>bg：把前台进程放到后台</li>
+<li>jobs：显示后台或挂起的进程</li>
+<li>ps：显示所有进程 ps -f 显示完全信息，包括占用cpu时间，开始时间。</li>
+<li>kill -9 324  强制结束进程标识符为324的进程</li>
+<li>sort 排序 -r 逆序；-d 字典顺序<br>ls | sort -r：逆序列出文件名</li>
+<li>tr  字符替换 -d 删除指定字符；ls | tr -d ‘log’；ls | tr ‘d’ ‘g’把d变成g</li>
+<li>crontab命令的功能是在一定的时间间隔调度一些命令的执行。任务调度的crond常驻命令crond 是linux用来定期执行程序的命令。当安装完成操作系统之后，默认便会启动此任务调度命令。crond命令每分锺会定期检查是否有要执行的工作，如果有要执行的工作便会自动执行该工作。</li>
+<li>crontab命令选项:-u指定一个用户;-l列出某个用户的任务计划;-r删除某个用户的任务;-e编辑某个用户的任务<br>分     小时    日       月       星期     命令<br>0-59   0-23   1-31   1-12     0-6     command (取值范围,0表示周日一般一行对应一个任务)<br>30     6       <em>       </em>     0      ls     指定每星期日的6:30执行ls命令[注：0表示星期天，1表示星期1</li>
+<li>环境变量 gedit /etc/proifle 更新环境变量source /etc/profile</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/02/04/Linux常用命令/" data-id="cjd8s8pc30002fot13r4b8djp" class="article-share-link">Compartir</a>
       
       
     </footer>
@@ -143,6 +514,11 @@
 
   
 
+
+  <nav id="page-nav">
+    
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Siguiente &raquo;</a>
+  </nav>
 
 </section>
         
@@ -158,7 +534,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archiv</h3>
+    <h3 class="widget-title">Archivos</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li></ul>
     </div>
@@ -168,16 +544,28 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">letzter Beitrag</h3>
+    <h3 class="widget-title">Posts recientes</h3>
     <div class="widget">
       <ul>
         
           <li>
-            <a href="/2018/02/04/你好-hexo/">你好,hexo</a>
+            <a href="/2018/02/04/维度的降低/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2018/02/04/hello-world/">Hello World</a>
+            <a href="/2018/02/04/推荐系统_介绍/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/02/04/图算法/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/02/04/特征选择/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/02/04/数据缺失问题的处理/">(no title)</a>
           </li>
         
       </ul>
@@ -193,7 +581,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2018 John Doe<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Construido por <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="维度的降低1.PCA的理解提起维度的降低，应用最多的便是PCA。对PCA的解释有两种：1种是最大化投影后数据的方差，因为方差最大的时候，数据的信息丢失的最少。第2种是最小化投影误差。2种方法最终都归结到求解到协方差矩阵的特征向量。 PCA的一般处理流程：  1.将A的每一列按均值做归一化，使归一化后的A的每一列均值为0； 2.求出A的协方差矩阵的特征值以及特征矩阵V。 3.B = AV  PCA的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2018/02/04/维度的降低/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="维度的降低1.PCA的理解提起维度的降低，应用最多的便是PCA。对PCA的解释有两种：1种是最大化投影后数据的方差，因为方差最大的时候，数据的信息丢失的最少。第2种是最小化投影误差。2种方法最终都归结到求解到协方差矩阵的特征向量。 PCA的一般处理流程：  1.将A的每一列按均值做归一化，使归一化后的A的每一列均值为0； 2.求出A的协方差矩阵的特征值以及特征矩阵V。 3.B = AV  PCA的">
+<meta property="og:updated_time" content="2017-07-22T10:21:00.323Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="维度的降低1.PCA的理解提起维度的降低，应用最多的便是PCA。对PCA的解释有两种：1种是最大化投影后数据的方差，因为方差最大的时候，数据的信息丢失的最少。第2种是最小化投影误差。2种方法最终都归结到求解到协方差矩阵的特征向量。 PCA的一般处理流程：  1.将A的每一列按均值做归一化，使归一化后的A的每一列均值为0； 2.求出A的协方差矩阵的特征值以及特征矩阵V。 3.B = AV  PCA的">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Buscar"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-维度的降低" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/02/04/维度的降低/" class="article-date">
+  <time datetime="2018-02-04T12:47:20.017Z" itemprop="datePublished">2018-02-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="维度的降低"><a href="#维度的降低" class="headerlink" title="维度的降低"></a>维度的降低</h2><h3 id="1-PCA的理解"><a href="#1-PCA的理解" class="headerlink" title="1.PCA的理解"></a>1.PCA的理解</h3><p>提起维度的降低，应用最多的便是PCA。对PCA的解释有两种：1种是最大化投影后数据的方差，因为方差最大的时候，数据的信息丢失的最少。第2种是最小化投影误差。2种方法最终都归结到求解到协方差矩阵的特征向量。</p>
+<p>PCA的一般处理流程：</p>
+<ul>
+<li>1.将A的每一列按均值做归一化，使归一化后的A的每一列均值为0；</li>
+<li>2.求出A的协方差矩阵的特征值以及特征矩阵V。</li>
+<li>3.B = AV</li>
+</ul>
+<p>PCA的一个优势是可以对变换后的样本数据进行重构只要保留特征矩阵就可以了。</p>
+<h3 id="2-K值的选择"><a href="#2-K值的选择" class="headerlink" title="2. K值的选择"></a>2. K值的选择</h3><p>一种确定K值的方法是K个特征值与原来D个特征值之和&gt;=0.99或者0.95</p>
+<h3 id="3-对PCA的评价"><a href="#3-对PCA的评价" class="headerlink" title="3.对PCA的评价"></a>3.对PCA的评价</h3><ul>
+<li>虽然能够降低维度，但是PCA不适合用来阻止过拟合，因为PCA没有考虑标签数据，只是考虑了样本数据的。</li>
+<li>一般求解方法使用SVD，速度更快。而且SVD没有计算协方差矩阵，对于某些矩阵，求协方差时很可能会丢失一些精度。</li>
+<li>一般情况下复杂度为O(D^3),但有一些学者的方法能达到O(MD^2)<h3 id="4-Kernel-PCA"><a href="#4-Kernel-PCA" class="headerlink" title="4.Kernel PCA"></a>4.Kernel PCA</h3>传统的PCA只是利用线性的特征组合，如果想找到非线性的特征组合的话就要考虑Kenel PCA，它可以利用一些非线性核的性质。关于kernel PCA可参看<a href="http://blog.csdn.net/wsj998689aa/article/details/40398777" target="_blank" rel="noopener">kernel PCA</a>。<h3 id="5-对kernel-PCA的评价"><a href="#5-对kernel-PCA的评价" class="headerlink" title="5.对kernel PCA的评价"></a>5.对kernel PCA的评价</h3></li>
+<li>Kernel PCA需要计算的矩阵的特征是NxN阶的，而线性PCA为DxD阶，对于高维数据，kernel trick依然可以使维度降至N</li>
+<li>Kernel PCA能够提取出非线性的特征，具有更大的灵活性</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/02/04/维度的降低/" data-id="cjd8s8pci000cfot1c96tt5ds" class="article-share-link">Compartir</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/02/04/推荐系统_介绍/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Viejo</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archivos</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Posts recientes</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/02/04/维度的降低/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/02/04/推荐系统_介绍/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/02/04/图算法/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/02/04/特征选择/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/02/04/数据缺失问题的处理/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 John Doe<br>
+      Construido por <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

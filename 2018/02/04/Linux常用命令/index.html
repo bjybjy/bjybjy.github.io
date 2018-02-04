@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Linux常用命令主要命令如下:  ls/ls -r:list directory content列出当前所有文件和文件夹的名称，加上-r之后是文件和文件夹的详细信息 dir [文件夹名称]:是dos下的命令，与ls命令类似 chmod：用于改变指定文件的权限命令Linux文件的三种身份和四种权限，三种身份分别为：（1）u：文件的拥有者（2）g：文件所属的群组（3）o：其他用户对于每个身份，又有四">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2018/02/04/Linux常用命令/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Linux常用命令主要命令如下:  ls/ls -r:list directory content列出当前所有文件和文件夹的名称，加上-r之后是文件和文件夹的详细信息 dir [文件夹名称]:是dos下的命令，与ls命令类似 chmod：用于改变指定文件的权限命令Linux文件的三种身份和四种权限，三种身份分别为：（1）u：文件的拥有者（2）g：文件所属的群组（3）o：其他用户对于每个身份，又有四">
+<meta property="og:updated_time" content="2017-07-22T10:21:00.299Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="Linux常用命令主要命令如下:  ls/ls -r:list directory content列出当前所有文件和文件夹的名称，加上-r之后是文件和文件夹的详细信息 dir [文件夹名称]:是dos下的命令，与ls命令类似 chmod：用于改变指定文件的权限命令Linux文件的三种身份和四种权限，三种身份分别为：（1）u：文件的拥有者（2）g：文件所属的群组（3）o：其他用户对于每个身份，又有四">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Buscar"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Linux常用命令" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/02/04/Linux常用命令/" class="article-date">
+  <time datetime="2018-02-04T12:47:19.978Z" itemprop="datePublished">2018-02-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Linux常用命令"><a href="#Linux常用命令" class="headerlink" title="Linux常用命令"></a>Linux常用命令</h1><p>主要命令如下:</p>
+<ul>
+<li>ls/ls -r:list directory content列出当前所有文件和文件夹的名称，加上-r之后是文件和文件夹的详细信息</li>
+<li>dir [文件夹名称]:是dos下的命令，与ls命令类似</li>
+<li>chmod：用于改变指定文件的权限命令<br>Linux文件的三种身份和四种权限，三种身份分别为：（1）u：文件的拥有者（2）g：文件所属的群组（3）o：其他用户<br>对于每个身份，又有四种权限，分别为：<br>(1)r：读取文件的权限（read）  常用数字4表示<br>(2)w：写入文件的权限（write） 常用数字2表示<br>(3)x：执行的权限（execute）   常用数字1表示<br>(4)s：特殊权限<br>举例：<br>chmod 751 test.txt    对文件的拥有者执行4+2+1的权限，对文件所属的群组执行4+1的权限，对其他用户执行1权限<br>chmod u=rwx,g+rx,o-x test.sh   +和-相当于增加和删除一些权限<br>chmod a+x test.sh     a相当于所有的3种用户u、g、o，即对所有的三种用户赋予执行的权限<br>drwxr-xr-x 一共有10个字符，第一个字符指是不是普通文件，第2~4代表文件拥有者，第5~7代表文件所属的群组，第8~10代表其他用户<ul>
+<li>Chown：用来更改某个目录或文件的用户名和用户组<br>chown HEHE hh.c ：修改文件hh.c为HEHE用户所有<br>chown -R HEHE:net /tmp/sco：将目录 /tmp/sco 这个目录的所有者和组分别改为HEHE和组net </li>
+<li>mkdir：-m 用来设置权限模式，默认是0777，可用chmod更改；-p 用来创建多级目录；-v 显示创建新目录时的信息</li>
+<li>Rmdir：用于删除空的目录  -v选项：提示；-p选项：级联删除<br>rmdir dir1 dir2:删除dir1和dir2两个空目录<br>rmdir -p -v 1122/1:假设1122/1和1122/2两个目录，先删除1122/1,再删除1122出错，因为1122不为空</li>
+<li>rm：删除文件或者目录  -f选项：不管目录下的文件存在不存在，都不给予提示；-r：删除此目录下的所有文件，但是此目录不删除；-rf组合删除:删除该目录以及该目录下的所有文件； -i：删除文件或文件夹前须要确认</li>
+<li>touch：创建一个新的文件 -a：改变访问时间；-m：改变改动时间；-t timestamp：改变访问时间和改动时间为timestamp</li>
+<li>Vi:创建一个新的文件，进入vi后，点击字母i进行编辑模式，若输入错误必须先按Esc退出该模式，进入命令行模式，按字符x进行删除。保存时需要在命令行模式下进行：（：w filename退出以filename名称保存；：wq保存修改并退出vi； ：q! 不保存强制退出）</li>
+<li>mv：移动文件到新的位置  -b ：若需覆盖文件，则覆盖前先行备份；-f ：force 强制的意思，如果目标文件已经存在，不会询问而直接覆盖；-i ：若目标文件 (destination) 已经存在时，就会询问是否覆盖；-u ：若目标文件已经存在，且 source 比较新，才会更新(update)；-t：即指定mv的目标目录，该选项适用于移动多个源文件到一个目录的情况，此时目标目录在前，源文件在后。</li>
+<li>cp：复制文件/文件夹到新的位置 （默认情况下，cp命令不能复制目录，如果要复制目录，则必须使用-R选项；当“源文件”为多个文件时，要求“目标文件”为指定的目录。<br>cp file /usr/men/tmp/file1：复制文件file到file1<br>cp -r /usr/men /usr/zh:将目录/usr/men下的所有文件及其子目录复制到目录/usr/zh中<br>cp -i /usr/men m*.c /usr/zh:交互式地将目录/usr/men中的以m打头的所有.c文件复制到目录/usr/zh中</li>
+<li>cat、more、less的区别：cat显示全部的文件内容。more和less都可以显示一部分内容进行滚动浏览，但区别是less可以利用pageup和pagedown键进行前后浏览，而more只能通过空格键往后浏览。后两者按q键可以退出<br>cat -n: 显示行号 cat -b: 显示行号且忽略空行</li>
+<li>head/tail:可以显示文件前n行和后n行的数据<br>例：head -n filename：显示前n行的文件内容</li>
+<li>find 指定的文件：查找相关文件</li>
+<li>Whereis：查找指定的文件源和二进制文件和手册等（例whereis java:查找java的安装地址)</li>
+<li>which:用于查询命令或别名的位置。</li>
+<li>Grep：查找文件里符合条件的字符串。Grep “sj” filename在文件filename中查找是否有字符“sj”</li>
+<li>Tar：用于多个文件或目录进行打包，但不压缩，同时也用命令进行解包<br>tar -c 创建新文档 -x 解包 -v 显示正在处理的文件名 -f 取代默认的文件名<br>tar -cvf project.tar project/* 把project目录下所有文件打包成文件project.jar</li>
+<li>Su：切换用户命令  </li>
+<li>Sudo：一系统管理员的身份执行命令  </li>
+<li>Passwd：用于修改用户的密码</li>
+<li>pwd：显示当前用户所在工作目录位置</li>
+<li>Who：显示系统中有那些用户在使用。</li>
+<li>man：帮助命令，man ls</li>
+<li>Free：查看当前系统的内存使用情况</li>
+<li>Uptime：显示系统运行了多长时间</li>
+<li>Ps：显示瞬间进程的动态</li>
+<li>Top: 动态地显示进程</li>
+<li>Date：显示或设定系统的日期与时间。</li>
+<li>Last：显示每月登陆系统的用户信息</li>
+<li>Kill： 杀死一些特定的进程</li>
+<li>Logout：退出系统</li>
+<li>Useradd/userdel:添加用户/删除用户</li>
+<li>Clear：清屏</li>
+<li>Passwd：设置用户密码</li>
+<li>Arp：网络地址显示及控制</li>
+<li>Netstat：显示网络连接.路由表和网络接口信息</li>
+<li>wc: 计数 -l: 行数；-w: 字数；-c: 字符数；<br>wc -l file1 file2 ……可以统计多个文件</li>
+<li>file 察看文件类型</li>
+<li>fg：把后台进程放到前台。fg %1 把后台第一个作业放到前台</li>
+<li>bg：把前台进程放到后台</li>
+<li>jobs：显示后台或挂起的进程</li>
+<li>ps：显示所有进程 ps -f 显示完全信息，包括占用cpu时间，开始时间。</li>
+<li>kill -9 324  强制结束进程标识符为324的进程</li>
+<li>sort 排序 -r 逆序；-d 字典顺序<br>ls | sort -r：逆序列出文件名</li>
+<li>tr  字符替换 -d 删除指定字符；ls | tr -d ‘log’；ls | tr ‘d’ ‘g’把d变成g</li>
+<li>crontab命令的功能是在一定的时间间隔调度一些命令的执行。任务调度的crond常驻命令crond 是linux用来定期执行程序的命令。当安装完成操作系统之后，默认便会启动此任务调度命令。crond命令每分锺会定期检查是否有要执行的工作，如果有要执行的工作便会自动执行该工作。</li>
+<li>crontab命令选项:-u指定一个用户;-l列出某个用户的任务计划;-r删除某个用户的任务;-e编辑某个用户的任务<br>分     小时    日       月       星期     命令<br>0-59   0-23   1-31   1-12     0-6     command (取值范围,0表示周日一般一行对应一个任务)<br>30     6       <em>       </em>     0      ls     指定每星期日的6:30执行ls命令[注：0表示星期天，1表示星期1</li>
+<li>环境变量 gedit /etc/proifle 更新环境变量source /etc/profile</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/02/04/Linux常用命令/" data-id="cjd8s8pc30002fot13r4b8djp" class="article-share-link">Compartir</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/02/04/README/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Nuevo</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/02/04/L0_L1_L2 regulation/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Viejo</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archivos</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Posts recientes</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/02/04/维度的降低/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/02/04/推荐系统_介绍/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/02/04/图算法/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/02/04/特征选择/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/02/04/数据缺失问题的处理/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 John Doe<br>
+      Construido por <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

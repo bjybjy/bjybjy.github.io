@@ -5,15 +5,18 @@
   
 
   
-  <title>你好,hexo | Hexo</title>
+  <title>Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
-<meta property="og:title" content="你好,hexo">
-<meta property="og:url" content="http://yoursite.com/2018/02/04/你好-hexo/index.html">
+  <meta name="description" content="可视化手段python语言的可视化seaborn、pandas、matplotlib三大,相关的问题主要包括（在ipython notebook下）：  matplotlib.interactive(True)能够连续绘制弹出图片 将图片嵌入ipython notebook:%pylab/matplotlib -inline plt.rcParams[‘font.sans-serif’]=[‘si">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2018/02/04/可视化手段/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:updated_time" content="2018-02-04T12:37:13.344Z">
+<meta property="og:description" content="可视化手段python语言的可视化seaborn、pandas、matplotlib三大,相关的问题主要包括（在ipython notebook下）：  matplotlib.interactive(True)能够连续绘制弹出图片 将图片嵌入ipython notebook:%pylab/matplotlib -inline plt.rcParams[‘font.sans-serif’]=[‘si">
+<meta property="og:updated_time" content="2017-07-22T10:21:00.311Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="你好,hexo">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="可视化手段python语言的可视化seaborn、pandas、matplotlib三大,相关的问题主要包括（在ipython notebook下）：  matplotlib.interactive(True)能够连续绘制弹出图片 将图片嵌入ipython notebook:%pylab/matplotlib -inline plt.rcParams[‘font.sans-serif’]=[‘si">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -60,33 +63,35 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-你好-hexo" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-可视化手段" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/02/04/你好-hexo/" class="article-date">
-  <time datetime="2018-02-04T12:37:13.000Z" itemprop="datePublished">2018-02-04</time>
+    <a href="/2018/02/04/可视化手段/" class="article-date">
+  <time datetime="2018-02-04T12:47:19.988Z" itemprop="datePublished">2018-02-04</time>
 </a>
     
   </div>
   <div class="article-inner">
     
     
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      你好,hexo
-    </h1>
-  
-
-      </header>
-    
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h1 id="可视化手段"><a href="#可视化手段" class="headerlink" title="可视化手段"></a>可视化手段</h1><p>python语言的可视化seaborn、pandas、matplotlib三大,相关的问题主要包括（在ipython notebook下）：</p>
+<ul>
+<li>matplotlib.interactive(True)能够连续绘制弹出图片</li>
+<li>将图片嵌入ipython notebook:%pylab/matplotlib -inline</li>
+<li>plt.rcParams[‘font.sans-serif’]=[‘simsun’] #将图片中所有字体改为宋体，用来正常显示中文标签simsun</li>
+<li>plt.rcParams[‘axes.unicode_minus’]=False #用来正常显示负号</li>
+<li>from matplotlib.font_manager import FontProperties<br>font = FontProperties(fname=r”C:\WINDOWS\Fonts\simsun.ttc”, size=13)#C:\WINDOWS\Fonts<br>plt.xlabel(x_lable, fontproperties=font)将x轴标签字体设为font  </li>
+<li>plt.legend(prop=font)将图例字体设置为font  </li>
+<li>ax=fig.add_subplot(111)<br>ax.set_xlim(0,360)<br>ax.set_xticks(ticks)设置刻度标签  </li>
+<li>plt.yticks(fontsize=13)设置刻度标签字体大小  </li>
+<li>matplotlib.style.use 选择配色模板（模板名称可以从plt.style.available）</li>
+</ul>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/02/04/你好-hexo/" data-id="cjd8ry2ur0001rct1hshsf29a" class="article-share-link">Compartir</a>
+      <a data-url="http://yoursite.com/2018/02/04/可视化手段/" data-id="cjd8s8pcg000afot1phf5cbt1" class="article-share-link">Compartir</a>
       
       
     </footer>
@@ -95,7 +100,7 @@
     
 <nav id="article-nav">
   
-    <a href="/2018/02/04/样本倾斜问题的处理/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/02/04/数据缺失问题的处理/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Nuevo</strong>
       <div class="article-nav-title">
         
@@ -105,9 +110,9 @@
     </a>
   
   
-    <a href="/2018/02/04/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/02/04/高斯混合模型/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Viejo</strong>
-      <div class="article-nav-title">Hello World</div>
+      <div class="article-nav-title"></div>
     </a>
   
 </nav>

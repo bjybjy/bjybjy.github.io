@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="L0、L1与L2 regulation三种常见的防止过拟合的方法 1.L0 regulation其惩罚项指的是权重向量中非零元素的个数。该种方法是最直接也是最有效的方法。但由于该方法属于NP hard问题，没有办法进行优化。实际上来说L1、L2方法都是对L1方法的折中。 2.L1 regulationL1 regulation又称Lasso，因其能够产生稀疏解而出名，可以用来作为特征选择。从频率的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2018/02/04/L0_L1_L2 regulation/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="L0、L1与L2 regulation三种常见的防止过拟合的方法 1.L0 regulation其惩罚项指的是权重向量中非零元素的个数。该种方法是最直接也是最有效的方法。但由于该方法属于NP hard问题，没有办法进行优化。实际上来说L1、L2方法都是对L1方法的折中。 2.L1 regulationL1 regulation又称Lasso，因其能够产生稀疏解而出名，可以用来作为特征选择。从频率的">
+<meta property="og:updated_time" content="2017-07-22T10:21:00.297Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="L0、L1与L2 regulation三种常见的防止过拟合的方法 1.L0 regulation其惩罚项指的是权重向量中非零元素的个数。该种方法是最直接也是最有效的方法。但由于该方法属于NP hard问题，没有办法进行优化。实际上来说L1、L2方法都是对L1方法的折中。 2.L1 regulationL1 regulation又称Lasso，因其能够产生稀疏解而出名，可以用来作为特征选择。从频率的">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Buscar"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-L0_L1_L2 regulation" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/02/04/L0_L1_L2 regulation/" class="article-date">
+  <time datetime="2018-02-04T12:47:19.975Z" itemprop="datePublished">2018-02-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="L0、L1与L2-regulation"><a href="#L0、L1与L2-regulation" class="headerlink" title="L0、L1与L2 regulation"></a>L0、L1与L2 regulation</h2><p>三种常见的防止过拟合的方法</p>
+<h3 id="1-L0-regulation"><a href="#1-L0-regulation" class="headerlink" title="1.L0 regulation"></a>1.L0 regulation</h3><p>其惩罚项指的是权重向量中非零元素的个数。该种方法是最直接也是最有效的方法。但由于该方法属于NP hard问题，没有办法进行优化。实际上来说L1、L2方法都是对L1方法的折中。</p>
+<h3 id="2-L1-regulation"><a href="#2-L1-regulation" class="headerlink" title="2.L1 regulation"></a>2.L1 regulation</h3><p>L1 regulation又称Lasso，因其能够产生稀疏解而出名，可以用来作为特征选择。从频率的角度来看，L1 regulation实际上来说是求解一个近似凸优化的问题。由于其在某些位置不可导，故无法使用梯度下降的方法。比较流行的是使用坐标下降的方法来进行优化。由于lasso在产生稀疏解的同时，权重为0的特征并不能说重要性比较低。因为lasso从共线或近似共线的一组特征中任意挑选一个，因此稳定性较差。从Bayesian的角度考虑，L1正则项的加入实际上是假设权重的先验分布为拉普拉斯分布</p>
+<h3 id="3-L2-regulation"><a href="#3-L2-regulation" class="headerlink" title="3.L2 regulation"></a>3.L2 regulation</h3><p>L2 regulation又称为ridge，其惩罚项是权重元素平方和。是凸优化问题，而且处处可导，比较常用的方法是GD/SGD，在进行GD/SGD进行优化的时候需要注意每步的步长，步长太大的话可能不会收敛，而步长较小的时候可能会收敛的速度比较慢，因此常常的做法是在训练刚开始的时刻采用较大的步长，在接近全剧最小点的时候在采用较小的步长。常用的选择1/sqrt(iter_num)。同时，从Bayesian的角度考虑，L2正则项的加入实际上是考虑了权重的先验为高斯分布。</p>
+<h3 id="4-L1、L2regulation的比较"><a href="#4-L1、L2regulation的比较" class="headerlink" title="4.L1、L2regulation的比较"></a>4.L1、L2regulation的比较</h3><ul>
+<li>L1 regulation的稳定性要差于L2 regulation，这是L1 regulation对于共线特征进行随机选择的缘故</li>
+<li>L1对异常点的容忍性要高于L2，这可以从拉普拉斯分布的长尾可以看出</li>
+<li>L1能产生稀疏解，而L2会使特征变小但不为0</li>
+<li>对于L1能够产生稀疏解的解释，以二维特征为例,L1的惩罚项是菱形，且4个顶点均位于坐标轴上，L2的惩罚项是一个圆，而我们的解可以看做一个一个椭圆，椭圆与菱形和圆的交点可以看做是最终的解。可以看出椭圆与菱形的交点更可能位于坐标轴上，这样的话，权重的一个维度变为0，这样便产生了稀疏解。</li>
+<li>L2可以用来防止过拟合，提高模型的泛化能力，因此来说就产生了elastic net即分配L1和L2不同的权重，既保证稀疏性和稳定性做一个权衡。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/02/04/L0_L1_L2 regulation/" data-id="cjd8s8pc50003fot196m1yigs" class="article-share-link">Compartir</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/02/04/Linux常用命令/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Nuevo</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/02/04/hive常用命令/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Viejo</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archivos</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Posts recientes</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/02/04/维度的降低/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/02/04/推荐系统_介绍/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/02/04/图算法/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/02/04/特征选择/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/02/04/数据缺失问题的处理/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 John Doe<br>
+      Construido por <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
